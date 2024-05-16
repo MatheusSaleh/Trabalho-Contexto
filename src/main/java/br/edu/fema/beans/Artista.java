@@ -3,9 +3,15 @@ package br.edu.fema.beans;
 public class Artista {
     private Integer codigo;
 
-    private Integer nome;
+    private String nome;
 
-    private Integer gravadora;
+    private String gravadora;
+
+    public Artista(Integer codigo, String nome, String gravadora) {
+        this.codigo = codigo;
+        this.nome = nome;
+        this.gravadora = gravadora;
+    }
 
     public Integer getCodigo() {
         return codigo;
@@ -15,19 +21,19 @@ public class Artista {
         this.codigo = codigo;
     }
 
-    public Integer getNome() {
+    public String getNome() {
         return nome;
     }
 
-    public void setNome(Integer nome) {
+    public void setNome(String nome) {
         this.nome = nome;
     }
 
-    public Integer getGravadora() {
+    public String getGravadora() {
         return gravadora;
     }
 
-    public void setGravadora(Integer gravadora) {
+    public void setGravadora(String gravadora) {
         this.gravadora = gravadora;
     }
 }
