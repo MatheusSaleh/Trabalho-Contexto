@@ -7,6 +7,12 @@ public class Album {
 
     private Artista artista;
 
+    public Album(Integer codigo, String nome, Artista artista) {
+        this.codigo = codigo;
+        this.nome = nome;
+        this.artista = artista;
+    }
+
     public Integer getCodigo() {
         return codigo;
     }

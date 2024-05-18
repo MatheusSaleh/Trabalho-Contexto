@@ -18,13 +18,13 @@ public class ArtistaDao {
 
     public void criarTabela() throws SQLException {
         String sql = "CREATE TABLE IF NOT EXISTS ARTISTA (" +
-                "codINT PRIMARY KEY," +
-                "nome VARCigo HAR(50) NOT NULL," +
+                "cod INT PRIMARY KEY," +
+                "nome VARCHAR(50) NOT NULL," +
                 "gravadora VARCHAR(50) NOT NULL)";
         PreparedStatement ps = cnn.prepareStatement(sql);
         ps.execute();
         ps.close();
-        System.out.println("Tabela criada com sucesso!");
+        System.out.println("Tabela de Artista criada com sucesso!");
     }
 
     public void cadastrar(Artista p) throws SQLException{
@@ -70,6 +70,23 @@ public class ArtistaDao {
             artista.setNome(rs.getString("NOME"));
             artista.setGravadora(rs.getString("GRAVADORA"));
             resultado.add(artista);
+        }
+        rs.close();
+        ps.close();
+        return resultado;
+    }
+
+    public Artista recuperarArtista(Integer id) throws SQLException{
+        Artista resultado = null;
+        String sql = "SELECT * FROM ARTISTA WHERE CODIGO = ?";
+        PreparedStatement ps = cnn.prepareStatement(sql);
+        ps.setInt(1, id);
+        ResultSet rs = ps.executeQuery();
+        if (rs.next()){
+            resultado = new Artista(0, null, null);
+            resultado.setCodigo(rs.getInt("CODIGO"));
+            resultado.setNome(rs.getString("NOME"));
+            resultado.setGravadora(rs.getString("GRAVADORA"));
         }
         rs.close();
         ps.close();
