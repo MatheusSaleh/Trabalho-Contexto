@@ -61,7 +61,7 @@ public class AlbumDao {
     public ArrayList<Album> recuperarAlbuns() throws SQLException{
         AlbumDao albumDao = new AlbumDao(cnn);
         ArrayList<Album> resultado = new ArrayList<Album>();
-        String sql = "SELECT * FROM ALBUM ORDER BY CODIGO";
+        String sql = "SELECT * FROM ALBUM ORDER BY COD";
         PreparedStatement ps = cnn.prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
         while (rs.next()) {
@@ -70,6 +70,23 @@ public class AlbumDao {
             a.setNome(rs.getString("nome"));
             a.setArtista(new ArtistaDao(cnn).recuperarArtista(rs.getInt("artista")));
             resultado.add(a);
+        }
+        rs.close();
+        ps.close();
+        return resultado;
+    }
+
+    public Album recuperarAlbum(Integer id) throws SQLException{
+        Album resultado = null;
+        String sql = "SELECT * FROM ALBUM WHERE cod = ?";
+        PreparedStatement ps = cnn.prepareStatement(sql);
+        ps.setInt(1, id);
+        ResultSet rs = ps.executeQuery();
+        if(rs.next()){
+            resultado = new Album(0, null, null);
+            resultado.setCodigo(rs.getInt("cod"));
+            resultado.setNome(rs.getString("nome"));
+            resultado.setArtista(new ArtistaDao(cnn).recuperarArtista(rs.getInt("artista")));
         }
         rs.close();
         ps.close();

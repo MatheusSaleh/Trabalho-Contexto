@@ -39,7 +39,7 @@ public class ArtistaDao {
     }
 
     public void atualizar(Artista p) throws SQLException{
-        String sql = "UPDATE ARTISTA SET nome = ?, gravadora = ? WHERE cod = ?";
+        String sql = "UPDATE ARTISTA SET nome = ?, gravadora = ? WHERE codigo = ?";
         PreparedStatement ps = cnn.prepareStatement(sql);
         ps.setString(1, p.getNome());
         ps.setString(2, p.getGravadora());
@@ -50,7 +50,7 @@ public class ArtistaDao {
     }
 
     public void excluir(Artista p) throws SQLException{
-        String sql = "DELETE FROM ARTISTA WHERE cod = ?";
+        String sql = "DELETE FROM ARTISTA WHERE codigo = ?";
         PreparedStatement ps = cnn.prepareStatement(sql);
         ps.setInt(1, p.getCodigo());
         ps.execute();

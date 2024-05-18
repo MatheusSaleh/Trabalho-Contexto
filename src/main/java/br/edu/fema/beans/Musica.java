@@ -7,6 +7,12 @@ public class Musica {
 
     private Album album;
 
+    public Musica(Integer codigo, String nome, Album album) {
+        this.codigo = codigo;
+        this.nome = nome;
+        this.album = album;
+    }
+
     public Integer getCodigo() {
         return codigo;
     }
