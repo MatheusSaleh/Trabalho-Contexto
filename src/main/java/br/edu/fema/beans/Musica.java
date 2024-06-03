@@ -1,5 +1,7 @@
 package br.edu.fema.beans;
 
+import java.util.Objects;
+
 public class Musica {
     private Integer codigo;
 
@@ -35,5 +37,22 @@ public class Musica {
 
     public void setAlbum(Album album) {
         this.album = album;
+    }
+
+    public String toString(){
+        return "Codigo da musica: " + codigo + "\nNome da musica: " + nome + "\nAlbum: " + album.getNome() + "\n";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Musica musica = (Musica) o;
+        return Objects.equals(codigo, musica.codigo) && Objects.equals(nome, musica.nome) && Objects.equals(album, musica.album);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(codigo, nome, album);
     }
 }

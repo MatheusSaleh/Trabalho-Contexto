@@ -26,6 +26,7 @@ public class Main {
 //            musicaDao.cadastrar(new Musica(1, "Trem das Sete", new Album(1, "Gita", new Artista(1, "Raul Seixas", "CBS"))));
 //            musicaDao.cadastrar(new Musica(2, "Que país é este?", new Album(2, "Faroeste Caboclo", new Artista(2, "Legião Urbana", "EMI"))));
 //            musicaDao.cadastrar(new Musica(3, "Exagerado", new Album(3, "Codinome Beija-Glor", new Artista(3, "Cazuza", "Som Livre"))));
+
             ArtistaDao dao = new ArtistaDao(cnn);
             AlbumDao albumDao = new AlbumDao(cnn);
             MusicaDao musicaDao = new MusicaDao(cnn);
@@ -54,6 +55,22 @@ public class Main {
             System.out.println(dao.recuperarArtista(1).getNome());
             System.out.println(albumDao.recuperarAlbum(1).getNome());
             System.out.println(musicaDao.recuperarMusica(1).getNome());
+            System.out.println("To String de Artista");
+            System.out.println(new Artista(1, "Raul Santos Seixas", "Warner"));
+            System.out.println("To String de Album");
+            System.out.println(new Album(1, "Krig-Ha, Bandolo", new Artista(1, "Raul Seixas", "CBS")));
+            System.out.println("To String de Musica");
+            System.out.println(new Musica(1, "Sociedade Alternativa", new Album(1, "Gita", new Artista(1, "Raul Seixas", "CBS"))));
+
+            Artista a4 = new Artista(4, "Zezé Di Camargo e Luciano", "Copacabana");
+
+            Artista a5 = new Artista(4, "Chitãozinho e Chororó", "Copacabana");
+
+            //dao.cadastrar(a4);
+
+            System.out.println(a4.equals(a5));
+
+
         } catch (Exception e) {
             e.printStackTrace();
         }
